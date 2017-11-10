@@ -1,0 +1,10 @@
+html
+	head
+		title Rende con JADE
+	body
+		h1!=titulo
+		p
+			- let arreglo=["mongodb", "express", "angular", "nodejs"];
+			- arreglo.forEach((elemento)=>{
+				p!= "<a href='http://www.google.com' target='blank'>"+elemento+"</h1>"
+			-	});

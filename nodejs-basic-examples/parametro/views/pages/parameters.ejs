@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Parámetro</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%if (locals.error) { %>
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> <%= locals.error %>
+                    </div>
+                <% } %>
+                <% cont  = 1; %>
+                    <% locals.parameters.forEach((parameter) =>{ %>
+                        <tr>
+                            <th scope="row" class="col-md-2">
+                                <%= cont %>
+                            </th>
+                            <td class="col-md-8">
+                                <%= parameter.parameter; %>
+                            </td>
+                            <td class="col-md-2">
+                                <a href="/parameter/<%= parameter._id %>" class="btn btn-info">Editar</a>
+                                <a href="/parameter/delete/<%= parameter._id %>" class="btn btn-info">Eliminar</a>
+                            </td>
+                        </tr>
+                        <% cont++; }); %>
+            </tbody>
+        </table>
+        <br>
+        <a href="/parameter" class="btn btn-info">Crear nuevo</a>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

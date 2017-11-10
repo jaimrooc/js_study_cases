@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+            <%if (locals.error) { %>
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> <%= locals.error %>
+                </div>
+            <% } %>
+        <div class="form-group">
+            <form action="/parameter/<%= parameter._id%>" method="POST">
+                <label>Parámetro</label>
+                <input type="text" name="parameter" class="form-control" placeholder="Ingrese parámetro" value="<%= parameter.parameter %>">
+                <br>
+                <input type="submit" name="" value="Enviar" class="btn btn-info">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>
