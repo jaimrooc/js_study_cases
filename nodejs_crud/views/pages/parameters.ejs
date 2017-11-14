@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Precio</th>
+                    <th>Pagina</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%if (locals.error) { %>
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> <%= locals.error %>
+                    </div>
+                <% } %>
+                <% cont  = 1; %>
+                    <% locals.books.forEach((book) =>{ %>
+                        <tr>
+                            <th scope="row" class="col-md-2">
+                                <%= cont %>
+                            </th>
+                            <td class="col-md-8">
+                                <%= book.titulo; %>
+                            </td>
+                            <td class="col-md-8">
+                                <%= book.autor; %>
+                            </td>
+                            <td class="col-md-8">
+                                <%= book.precio; %>
+                            </td>
+                            <td class="col-md-8">
+                                <%= book.pagina; %>
+                            </td>
+
+                            <td class="col-md-2">
+                                <a href="/parameter/<%= book._id %>" class="btn btn-info">Editar</a>
+                                <a href="/parameter/delete/<%= book._id %>" class="btn btn-info">Eliminar</a>
+                            </td>
+                        </tr>
+                        <% cont++; }); %>
+            </tbody>
+        </table>
+        <br>
+        <a href="/parameter" class="btn btn-info">Crear nuevo</a>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>
